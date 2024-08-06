@@ -18,9 +18,18 @@ function SearchField() {
   }
 
   return (
-    <form onSubmit={handleSubmit} method="GET" action="/search">
+    <form
+      onSubmit={handleSubmit}
+      method="GET"
+      action="/search"
+      className="flex-1 max-w-[450px] m-auto"
+    >
       <div className="relative">
-        <Input name="q" placeholder="Search.." className="pe-10" />
+        <Input
+          name="q"
+          placeholder="Search.."
+          className="pe-10 rounded-full "
+        />
         <SearchIcon className="absolute right-3 top-1/2 -translate-y-1/2 size-5 transform text-muted-foreground" />
       </div>
     </form>
