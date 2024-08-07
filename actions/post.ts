@@ -2,7 +2,9 @@
 
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
+import { postDataInclude } from "@/lib/types";
 import { createPostSchema } from "@/lib/validation";
+import { revalidatePath } from "next/cache";
 
 export async function submitPost(input: string) {
   const { user } = await validateRequest();
@@ -17,4 +19,14 @@ export async function submitPost(input: string) {
       userId: user.id,
     },
   });
+}
+
+export async function getAllPosts() {
+  const posts = await prisma.post.findMany({
+    include: postDataInclude,
+    orderBy: { createdAt: "desc" },
+  });
+
+  revalidatePath("/");
+  return posts;
 }
