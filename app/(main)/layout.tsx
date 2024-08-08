@@ -20,7 +20,7 @@ async function Layout({ children }: { children: React.ReactNode }) {
           {children}
         </div>
 
-        <MenuBar className="sticky bottom-0 flex w-full justify-center gap-5 border-t p-3 sm:hidden" />
+        <MenuBar className="sticky bottom-0 flex w-full justify-center gap-5 border-t p-3 sm:hidden bg-theme" />
       </div>
     </SessionProvider>
   );
