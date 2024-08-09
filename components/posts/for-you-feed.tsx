@@ -7,6 +7,7 @@ import Post from "./post";
 import kyInstance from "@/lib/ky";
 import { Button } from "../ui/button";
 import InfinitScrollContainer from "../infinit-scroll-container";
+import PostsLoadingSkeleton from "./posts-loading-skeleton";
 
 export default function ForYouFeed() {
   const {
@@ -32,7 +33,7 @@ export default function ForYouFeed() {
   const posts = data?.pages.flatMap((page) => page.posts) || [];
 
   if (status === "pending") {
-    return <Loader2 className="mx-auto animate-spin" />;
+    return <PostsLoadingSkeleton />;
   }
 
   if (status === "error") {

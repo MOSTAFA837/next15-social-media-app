@@ -11,7 +11,7 @@ import { formatNumber } from "@/lib/utils";
 
 export default function TrendsSidebar() {
   return (
-    <div className="sticky top-[5.25rem] hidden h-fit w-56 flex-none space-y-5 md:block lg:w-72">
+    <div className="sticky top-[5.25rem] hidden h-fit w-56 flex-none space-y-5 md:block lg:w-72 bg-theme rounded-2xl">
       <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
         <WhoToFollow />
         <TrendingTopics />

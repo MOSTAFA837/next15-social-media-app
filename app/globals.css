@@ -64,11 +64,11 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-black/10 dark:bg-background text-foreground;
   }
 
   .bg-theme {
-    @apply bg-gray-100 dark:bg-zinc-800;
+    @apply bg-zinc-100 dark:bg-zinc-800;
   }
 }
 
