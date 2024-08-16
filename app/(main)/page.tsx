@@ -1,4 +1,4 @@
-import PostEditor from "@/components/post-editor";
+import PostEditor from "@/components/posts/editor/post-editor";
 import ForYouFeed from "@/components/posts/for-you-feed";
 import TrendsSidebar from "@/components/trends-sidebar";
 

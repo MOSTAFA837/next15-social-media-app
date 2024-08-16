@@ -13,12 +13,15 @@ export async function submitPost(input: string) {
 
   const { content } = createPostSchema.parse({ content: input });
 
-  await prisma.post.create({
+  const newPost = await prisma.post.create({
     data: {
       content,
       userId: user.id,
     },
+    include: postDataInclude,
   });
+
+  return newPost;
 }
 
 export async function getAllPosts() {
