@@ -2,9 +2,8 @@
 
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { postDataInclude } from "@/lib/types";
+import { getPostDataInclude } from "@/lib/types";
 import { createPostSchema } from "@/lib/validation";
-import { revalidatePath } from "next/cache";
 
 export async function submitPost(input: string) {
   const { user } = await validateRequest();
@@ -18,20 +17,10 @@ export async function submitPost(input: string) {
       content,
       userId: user.id,
     },
-    include: postDataInclude,
+    include: getPostDataInclude(user.id),
   });
 
   return newPost;
-}
-
-export async function getAllPosts() {
-  const posts = await prisma.post.findMany({
-    include: postDataInclude,
-    orderBy: { createdAt: "desc" },
-  });
-
-  revalidatePath("/");
-  return posts;
 }
 
 export async function deletePost(id: string) {
@@ -47,7 +36,7 @@ export async function deletePost(id: string) {
 
   const deletedPost = await prisma.post.delete({
     where: { id },
-    include: postDataInclude,
+    include: getPostDataInclude(user.id),
   });
 
   return deletedPost;
